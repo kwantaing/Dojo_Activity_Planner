@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="~/css/style.css">
+<div class="text-center">
+    <h2 class="display-5">Register</h2>
+    @model User
+    <form  class="reggy" asp-action="Register" controller="Home" method="post">
+        <label for="namename">Name</label><br>
+        <span class="error" asp-validation-for="name"></span>
+        <input class="form-control" type="text" name="name">
+        <label for="email">Email</label><br>
+        <span class="error" asp-validation-for="email"></span>
+        <input class="form-control" type="email" name="email">
+        <label for="password">Password</label><br>
+        <span class="error" asp-validation-for="password"></span>
+        <input class="form-control" type="password" name="password">
+        <label for="pwConfirm">Confirm Password</label><br>
+        <span class="error" asp-validation-for="pwConfirm"></span>
+        <input class="form-control" type="password" name="pwConfirm">
+        <hr>
+        <button class=" btn btn-primary">Register</button>
+    </form>
+</div>

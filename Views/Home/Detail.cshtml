@@ -1,0 +1,39 @@
+@model DojoActivity
+<link rel="stylesheet" href="~/css/style.css">
+<div class="dashHeader">
+    <a asp-action="Welcome" controller="Home"><h2 class="display-4">Dojo Activity Center</h2></a>
+    <div class="rightheader">
+        <h5>Welcome, @ViewBag.user_name!</h5>
+        <h5><a href="/logout">Log Out</a></h5>
+    </div>
+</div><hr>
+<div class="main">
+    <h3 class="display-4">@Model.name</h3>
+        @{
+        if(Model.coordinator_id == ViewBag.user_id)
+        {
+            <a class="DetailAction btn btn-danger"href="/activity/@Model.activity_id/delete">Delete</a>
+        }else if(Model.Plans.FirstOrDefault(p => p.user_id == ViewBag.user_id)!=null)
+        {
+            <a class="DetailAction btn btn-primary"href="/activity/@Model.activity_id/leave">Leave</a>
+        }else
+        {
+            <a class="DetailAction btn btn-primary"href="/activity/@Model.activity_id/join">Join</a>
+        }
+    }
+    
+    <div class="ActInfo">
+        <h4>Event Coordinator:  @Model.Coordinator.name</h4><br>
+        <h5>Description:</h5><br>
+        <p class="desc">@Model.description</p><br>
+        <h5>Participants:</h5><br>
+        <div class="participant_list">
+            @foreach(var plan in @Model.Plans)
+            {
+                <p> - @plan.Participant.name</p>
+            }
+        </div>
+
+    </div>
+    
+</div>

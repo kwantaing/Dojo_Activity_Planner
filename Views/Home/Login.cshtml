@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="~/css/style.css">
+<div class="text-center">
+    @model LogUser
+    <h2 class="display-5">Login</h2>
+    <form class="loggy" method="post" asp-action="Login" controller="Home">
+        <label for="logEmail">Email</label><br>
+        <span class="error" asp-validation-for="logEmail"></span>
+        <input type="email" name="logEmail" class="form-control">
+        <label for="logPassword">Password</label><br>
+        <span class="error" asp-validation-for="logPassword"></span>
+        <input type="password" name="logPassword" class="form-control"><hr><br>
+        <button class="btn btn-primary">Log in!</button>
+    </form>
+</div>

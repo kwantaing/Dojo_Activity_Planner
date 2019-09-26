@@ -1,0 +1,36 @@
+@model DojoActivity
+<link rel="stylesheet" href="~/css/style.css">
+<div class="dashHeader">
+    <a asp-action="Welcome" controller="Home"><h2 class="display-4">Dojo Activity Center</h2></a>
+    <div class="rightheader">
+        <h5>Welcome, @ViewBag.user_name!</h5>
+        <h5><a href="/logout">Log Out</a></h5>
+    </div>
+</div><hr>
+    <h3 class="display-4">Create an Activity</h3>
+<div class="main ">
+    <form method="post" asp-action="newActivity" controller="Home" class="addActivity text-left">
+        <span asp-validation-for="name"class="error"></span><br>
+        <label for="name">Title:</label>
+        <input type="text" class="form-control" name="name">
+        <span asp-validation-for="time"class="error"></span><br>
+        <label for="time">Time:</label>
+        <input type="time" class="form-control" name="time">
+        <span asp-validation-for="date"class="error"></span><br>
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" name="date">
+        <span asp-validation-for="duration" class="error"></span><br>
+        <label for="duration">Duration:</label>
+        <input type="number" class="form-control" name="duration">
+        <select class="form-control"name="durationType">
+            <option value="Minutes">Minutes</option>
+            <option value="Hours">Hours</option>
+            <option value="Days">Days</option>
+        </select>
+        <span  asp-validation-for="description" class="error"></span><br>
+        <label for="description">Description:</label>
+        <input type="text" name="description" class="form-control">
+        <input type="hidden" name="coordinator_id" value=@ViewBag.user_id>
+        <button class="btn btn-primary">Create Activity</button>
+    </form>
+</div>

@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="~/css/style.css">
+<div class="dashHeader">
+    <h2 class="display-4">Dojo Activity Center</h2>
+    <div class="rightheader">
+        <h5>Welcome, @ViewBag.user_name!</h5>
+        <h5><a href="/logout">Log Out</a></h5>
+    </div>
+</div>
+<div>
+    @model List<DojoActivity>
+    <div class="activities">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Activity</th>
+                    <th>Date and Time</th>
+                    <th>Duration</th>
+                    <th>Event Coordinator</th>
+                    <th>No. of Participants</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var sortedActivities = Model.OrderBy(a => a.date).ToList();
+                } 
+                @foreach(var activity in sortedActivities)
+                {
+                    <tr>
+                        <td><a href="/activity/@activity.activity_id">@activity.name</a></td>
+                        <td>@activity.fullTime.ToString("M/dd @ h:mm tt")</td>
+                        @{
+                            if(activity.duration == 1){
+                                <td>@activity.duration @activity.durationType.Substring(0,(@activity.durationType.Length-1))</td>
+                            }
+                            else
+                            {
+                                <td>@activity.duration @activity.durationType</td>
+
+                            }
+                        }
+                        <td>@activity.Coordinator.name</td>
+                        <td>@activity.Plans.Count</td>
+                        <td>
+                        @{
+                            if(activity.coordinator_id == ViewBag.user_id)
+                            {
+                                <a class="btn btn-danger"href="/activity/@activity.activity_id/delete">Delete</a>
+                            }else if(activity.Plans.FirstOrDefault(p => p.user_id == ViewBag.user_id)!=null)
+                            {
+                                <a class="btn btn-primary"href="/activity/@activity.activity_id/leave">Leave</a>
+                            }else
+                            {
+                                <a class="btn btn-primary"href="/activity/@activity.activity_id/join">Join</a>
+                            }
+                        }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <a href="/new" class="addActBtn btn btn-primary">Add a New Activity</a>
+</div>

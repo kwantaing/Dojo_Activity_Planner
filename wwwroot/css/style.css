@@ -1,0 +1,87 @@
+.reggy{
+    margin-top:15%;
+    width: 100%;
+    display:inline-block;
+}
+.loggy{
+    margin-top: 15%;
+    width: 100%;
+    display:inline-block;
+}
+.reggy input, .loggy input{
+    margin: 1% 0;
+}
+.reggy button, .reggy button{
+    margin: 15px 0;
+}
+.error{
+    color:red;
+}
+.participant_list{
+    margin-left: 30px;
+}
+.login
+{   
+    margin-top:5%;
+    display:inline-block;
+    width:45%;
+    vertical-align:top;
+}
+.register
+{
+    margin-right:9%;
+    margin-top: 5%;
+    display: inline-block;
+    width:45%;
+}
+.addActivity
+{   
+    width: 60%;
+    display: inline-block;
+}
+.addActivity *
+{
+    width: 100%;
+    margin:5px 25%;
+}
+.dashHeader
+{
+    position:relative;
+    padding-bottom: 1%;
+    
+}
+.dashHeader h2, .dashHeader .display-4
+{
+    display:inline-block;
+    margin-top: 10px;
+}
+.rightheader *
+{
+    display:inline-block;
+    margin-left: 25px;
+}
+.rightheader
+{
+    display:inline-block;
+    position: absolute;
+    top: 30px;
+    right:0px;
+}
+.addActBtn
+{
+    margin-left: 80%;
+}
+.DetailAction
+{
+    margin-left:90%;
+}
+.ActInfo
+{
+    margin-left: 15%;
+}
+.ActInfo  .desc
+{
+    margin-left:5%;
+    margin-bottom: 150px;
+}
+
